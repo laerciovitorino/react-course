@@ -1,5 +1,5 @@
 # React Course
-  The instructions and guidelines below are all related to the React Course taught by [Andrew Mead](https://github.com/andrewjmead) on the Udemy platform. All snippets of code and instructions below were took from his course. All credits go to him.
+  **DISCLAIMER:** The instructions and guidelines below are all related to the React Course taught by [Andrew Mead](https://github.com/andrewjmead) on the Udemy platform. All snippets of code and instructions below were took from his course. All credits go to him.
 
   This README file is divided into sections to better guide anyone who would like to follow along and for people who don't have prior experience with React development. There is a general setup section and after that the sections are related for the various sub-projects in this course.
 
@@ -12,6 +12,8 @@
 * Then, check which version of npm you have installed. To do that, just type in **npm -v**. As the same with *node -v*, a version number should appears on the screen.
 
 ## Hello React Project
+This project is divided into two parts: the first one, **Initial Version**, will guide you on how to build a React App without almost any automation; the second one, **Enhanced Version**, will show you how to automate some parts in the development process using some third-party tools and libraries in order to ease the way you develop React applications
+
 Before we get started, we need first to do some configuration in order to generate our *package.json* file. This file will keep all the information about license, author, description etc, and about the dependencies(libraries, modules etc) used to work on the project and to ease the development process.
 
 * First off, create a directory with the name HelloReact: mkdir HelloReact (*via cli*)
@@ -51,22 +53,50 @@ For the projects that we'll be working on, it's necessary to have a webserver up
    });
    ```
 
-* Create the **public** folder referenced in the *server.js* file. This folder will hold all the application files that will be used to generate our web application
+* To test if the server is working properly, first we need to:
+  * Create the **public** folder referenced in the *server.js* file. This folder will hold all the application files that will be used to generate our web application;
+  * Create an *index.html* file inside the **public** folder, and inside it, type in the following snippet of code:
+     ```html
+     <!DOCTYPE html>
+     <html>
+       <head>
+         <meta charset="utf-8">
+         <title>Hello React</title>
+       </head>
+       <body>
+         <h1>Hello World!</h1>
+       </body>
+     </html>
+     ```
 
-* Inside the **public** folder, create an *index.html* file and inside it, type in the following snippet of code(for now):
-   ```html
-   <!DOCTYPE html>
-   <html>
-     <head>
-       <meta charset="utf-8">
-       <title>Hello React</title>
-     </head>
-     <body>
-       <h1>Hello World!</h1>
-     </body>
-   </html>
-   ```
+  * After that, in the command line, inside the **HelloReact** folder, enter the following:
+     * **node server.js**
+     * The message: *Express server is up on port 3000* will appears and you can see in your web browser if the content of the **index.html** file is exhibited. If so, everything worked as expected and you are good to go with React development and follow along. :thumbsup:
 
-* After all that above, you can test if everything is working fine. In the command line, inside the **HelloReact** folder, enter the following:
-   * **node server.js**
-   * The message: *Express server is up on port 3000* will appears and you can see in your web browser if the content of the **index.html** file is exhibited. If so, everything worked as expected and you are good to go with React development and follow along.
+  * Everytime you need to check if your project is working properly you can run the command just above to run the server and then see the result in the browser
+
+
+### Initial Version
+In this version, almost all the libraries used in the code will be imported manually, as well as the ....
+
+* First off, inside the **index.html** file you will do the following:
+  * add the three lines below inside the `<head></head>` tags:
+  ```html
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+  ```
+
+  * Remove the `<h1></h1>` tags along with its content and add the following:
+  ```html
+  <div id="app"></div>
+
+  <script type="text/babel">
+    ReactDOM.render(
+      <h1>Hello React!</h1>,
+      document.getElementById('app')
+    );
+  </script>
+  ```
+
+* To see if everything is fine, run the server and check the result in the browser. If you see **Hello React!** on your screen. Congrats!
